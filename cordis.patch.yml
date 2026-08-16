@@ -1,0 +1,3 @@
+- insert:
+    - id: draw-gacha
+      name: '@deepseek-ai/dsh-draw-gacha'
