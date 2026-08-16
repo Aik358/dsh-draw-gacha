@@ -1,6 +1,6 @@
 {
   "name": "@a9i5k4/dsh-draw-gacha",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "DeepSeek绘画抽卡：给 DeepSeek Harness 发送按钮旁加一根 3D 拉杆，拉下去就会用模型思维链的文本信号开一局像素风「滑动变祖器」抽卡。Just for fun.",
   "type": "module",
   "main": "lib/index.js",
@@ -9,11 +9,28 @@
     "./client": "./lib/client.js",
     "./package.json": "./package.json"
   },
-  "files": ["lib", "cordis.patch.yml", "README.md", "LICENSE"],
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
   "license": "MIT",
-  "keywords": ["deepseek", "harness", "dsh", "plugin", "gacha", "抽卡", "滑动变祖器", "just-for-fun", "web-ui"],
+  "keywords": [
+    "deepseek",
+    "harness",
+    "dsh",
+    "plugin",
+    "gacha",
+    "抽卡",
+    "滑动变祖器",
+    "just-for-fun",
+    "web-ui"
+  ],
   "dsh": {
-    "bundle": { "patch": "./cordis.patch.yml" },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
     "client": {
       "platform": "web",
       "inject": [
