@@ -1,6 +1,6 @@
 {
   "name": "@a9i5k4/dsh-draw-gacha",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "DeepSeek绘画抽卡：给 DeepSeek Harness 发送按钮旁加一根 3D 拉杆，拉下去就会用模型思维链的文本信号开一局像素风「滑动变祖器」抽卡。Just for fun.",
   "type": "module",
   "main": "lib/index.js",

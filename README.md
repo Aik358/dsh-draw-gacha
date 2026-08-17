@@ -3,10 +3,9 @@
 > 给 DeepSeek Harness 的发送按钮旁装一根 3D 拉杆——拉下去，用模型思维链的文本信号开一局像素风抽卡。**纯属娱乐，Just for fun。**
 
 > 预览：克隆仓库后直接打开 `persistent/dev-preview.html`（零依赖，双击浏览器即可观看完整三维抽卡演出，无需 DSH）。
+> **2026-08-18 更新 (v0.1.6)**: `llm/stream` 监听器改为消费方防御——`for await (const chunk of await next())` 先 await 再迭代。链上任何下游监听器返回 Promise 或流都能安全透传，不再有「async 监听器包 Promise → 全局模型调用崩溃」的隐患。
 
----
-
-## 这是什么
+---## 这是什么
 
 DeepSeek Harness（DSH）的模型调用效果方差很大，像抽卡一样忽好忽坏。这个插件把"抽卡"变成了字面意思：
 

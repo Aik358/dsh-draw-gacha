@@ -2,6 +2,12 @@
 
 All notable changes to `@a9i5k4/dsh-draw-gacha` are documented here.
 
+## [0.1.6] - 2026-08-18
+
+### Fixed
+
+- **llm/stream waterfall consumer defense**: the listener now iterates `for await (const chunk of await next())` instead of `for await (const chunk of next())`. Any downstream listener that returns a Promise (e.g. an `async` listener wrapping an async generator) would previously crash every model request with `next(...) is not a function or its return value is not async iterable`; awaiting first makes the chain robust regardless of what downstream returns. (See the rule written into dsh-anchored-monitor: llm/stream producers must be plain functions returning async generators; consumers must `await next()` first.)
+
 ## [0.1.2] - 2026-08-16
 
 ### Fixed
