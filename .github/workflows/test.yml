@@ -17,3 +17,5 @@ jobs:
         run: node --check lib/index.js && node --check lib/client.js
       - name: signal statistics test
         run: node signal.test.js
+      - name: lever slot-contract test
+        run: node lever.test.js
