@@ -4,6 +4,7 @@
 
 > 预览：克隆仓库后直接打开 `persistent/dev-preview.html`（零依赖，双击浏览器即可观看完整三维抽卡演出，无需 DSH）。
 > **2026-08-18 更新 (v0.1.6)**: `llm/stream` 监听器改为消费方防御——`for await (const chunk of await next())` 先 await 再迭代。链上任何下游监听器返回 Promise 或流都能安全透传，不再有「async 监听器包 Promise → 全局模型调用崩溃」的隐患。
+> **2026-09-16 更新 (v0.1.7)**: 修复 dsh ≥ 0.1.5-rc.1 下「拉杆恒为 disabled」——`conversation.input.right` 的 owner props 被 host 移除后，草稿改由标准 `useInput` selector hook 提供，旧 host 继续走 `props.input`。
 
 ---## 这是什么
 
@@ -47,7 +48,9 @@ DeepSeek Harness（DSH）的模型调用效果方差很大，像抽卡一样忽�
 dsh plugin --profile web add @a9i5k4/dsh-draw-gacha
 ```
 
-然后在 Profile 的 `cordis.patch.yml`（`$DSH_HOME/profiles/web/cordis.patch.yml`）注册插件行：
+包内已声明 `dsh.bundle.patch`：`dsh plugin add` / dsh-market 安装时，插件行会由插件自带的 `cordis.patch.yml` 自动注入（Profile 的 `dsh.profile.bundles` 会包含该包），**无需**再手写下面这一行——重复添加会产生重复 loader entry。
+
+只有手动 `link:` / 源码放置、且确认该包未进入 `dsh.profile.bundles` 时，才需要在 Profile 的 `cordis.patch.yml`（`$DSH_HOME/profiles/web/cordis.patch.yml`）补上插件行：
 
 ```yaml
 - insert:
